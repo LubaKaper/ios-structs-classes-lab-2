@@ -12,6 +12,20 @@ struct Room {
      let width: Double
 }
 ```
+```
+struct Room {
+     let maxOccupancy: Int
+     var length: Double
+     let width: Double
+}
+var myRoom = Room(maxOccupancy: 2, length: 10, width: 5)
+var myOldRoom = myRoom
+myOldRoom.length = 15
+print(myOldRoom.length)
+print(myRoom.length)
+
+myRoom will still have lengh 10, because struct is a value type
+```
 
 ## Question 2
 
@@ -22,6 +36,19 @@ class Bike {
     var wheelNumber = 2
     var hasBell = false
 }
+```
+```class Bike {
+    var wheelNumber = 2
+    var hasBell = false
+}
+var myBike = Bike()
+print(myBike.wheelNumber)
+var myBabyBike = myBike
+myBabyBike.wheelNumber = 3
+print(myBabyBike.wheelNumber)
+print(myBike.wheelNumber)
+
+myBike will have 3 wheels now, because both variables are pointing to the same instance in class
 ```
 
 ## Question 3
@@ -36,7 +63,35 @@ class Animal {
     }
 }
 ```
+```
+class Animal {
+    var name: String = "No name animal"
+    func printDescription() {
+        print("I am an animal named \(name)")
+    }
+}
+class Bird: Animal {
+    var canFly: Bool
+    init(canFly: Bool){
+        self.canFly = canFly
+       
+    }
+   
+    override func printDescription() {
+        if canFly == true {
+            print("\(name) can fly")
+        }else{
+            print("\(name) does not fly")
+        }
+    }
+}
+let penguin = Bird(canFly: false)
 
+penguin.name = "Luba"
+print(penguin.name)
+
+penguin.printDescription()
+```
 b. Override the printDescription method to have the instance of the Bird object print out its name and whether it can fly
 
 
