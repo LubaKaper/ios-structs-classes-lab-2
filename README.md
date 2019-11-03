@@ -114,7 +114,24 @@ class Bike {
 a. Create a `LoudBike` subclass of Bike.  When you call `ringBell` it should ring the bell in all caps.
 
 b. Give `LoudBike` a new method called `ringBell(times:)` that rings the bell a given number of times
+```
+class LoudBike: Bikee {
+   override func ringBell() {
+        print("RING")
+        }
+    
+    func ringBell(times: Int) {
+        if times > 0 {
+            for _ in 0..<times {
+                ringBell()
+            }
+        }
+    }
+}
 
+var bike = LoudBike()
+bike.ringBell(times: 3)
+```
 
 ## Question 5
 
@@ -148,7 +165,32 @@ for shape in myShapes {
     print("This is a \(shape.name) with an area of \(shape.area) and a perimeter of \(shape.perimeter)")
 }
 ```
+```
+class Square: Shape {
+    var sideLength = 5.0
+    override var area: Double {
+        sideLength * sideLength
+    }
+    override var perimeter: Double {
+        sideLength * 4
+    }
+    override var name: String {
+        return "This is a Square with area of \(area) and perimeter of \(perimeter) "
+    }
+}
+var mySquare = Square()
+print(mySquare.name)
 
+class Rectangle: Shape {
+    var width = 6.0
+    var height = 4.0
+    override var name: String {
+        return "This is a Rectangle with area of \(width * height) and perimeter \((width + height) * 2)"
+    }
+}
+var myRectangle = Rectangle()
+print(myRectangle.name)
+```
 ## Question 6
 
 a. Given the Point object below, complete the `distance` method so that it returns the distance between a given point.
